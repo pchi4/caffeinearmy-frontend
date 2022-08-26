@@ -17,11 +17,12 @@
     margin: 0 auto!important;
 }
 
-.estilosTitulos{
-    padding: 36px!important;
+/* .estilosTitulos{
+    padding: 36px;
     border: none;
+    font-weight: bolder;
     padding: 20px;
-}
+} */
 
 .btnColor{
     background: #FB637E 0% 0% no-repeat padding-box!important;
@@ -51,3 +52,37 @@
 /* .paddingNav{
     padding: 0px 120px!important;
 } */
+
+@media (max-width: 500px){
+
+    .lojas, .logout, .tituloLoja{
+        display: none;
+    }
+
+    .estilosTitulos{
+        padding: 0;
+    }
+
+    .acordionBodyMb{
+        box-sizing: content-box !important;
+    }
+
+    .cardMb{
+        margin: 0!important;
+        padding: 20px;
+        border: 1px solid #cdcdcd;
+    }
+
+    .marcaLoja{
+        width: 100%;
+    }
+
+    .svgLoja{
+        margin: 0;
+        padding: 10px;
+    }
+
+    .divW{
+        width: 50%;
+    }
+}

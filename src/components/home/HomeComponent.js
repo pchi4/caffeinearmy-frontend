@@ -1,24 +1,29 @@
 import NavBar from "../layouts/NavBar";
 import style from '../home/HomeComponent.module.css'
+import { FaArrowRight } from 'react-icons/fa'
 
 export default function HomeComponent(){
     return(
         <div>
             <NavBar></NavBar>
-            <div className={style.background}>
-                <div class="mt-5" className={style.content}>
-                    <div class="d-flex m-4 justify-content-evenly">
-                        <input class="form-control" className={style.inputSearch} type="text"  placeholder="Digite um CNPJ" aria-describedby="button-addon2"></input>
-                        <button class="ml-3 btn btn-secondary"  className={style.btnColor}  type="button">Buscar Loja</button>
+            <div class="text-danger border-bottom border-muted"></div>
+            <div class="d-sm" className={style.background}>
+                <div className={style.content}>
+                    <div class="d-flex justify-content-evenly align-items-center">
+                        <div class="mb-3 w-75 p-3">
+                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Digite um CNPJ"></input>
+                        </div>  
+                        <div class="mb-3"> 
+                            <button class="btn btn-danger d-sm-block d-none m-2"><FaArrowRight/></button>
+                            <button class="ml-3 btn btn-danger d-none d-sm-block m-2" type="button">Buscar Loja</button>
+                        </div>       
                     </div>
-                    <div class="m-3">
-                        <hr className={style.containerHome}></hr>
-                    </div>
+                    <div class="h4 pb-2 mb-4 text-danger border-bottom border-muted"></div>
                     <div class="m-3 p-1 text-center">
-                        <h4 class="fw-bold" className={style.estilosTitulos}><img src="/icone_loja_roxo.svg" className={style.svgLoja}></img> LOJA DE SUPLEMENTOS <span class="text-secondary">- LOJA DE SUPLEMENTOS LTDA.</span></h4>
+                        <h4 class="fw-bold"><img src="/icone_loja_roxo.svg" alt="icone roxo da loja" class="rounded-circle p-2 bg-info"></img> LOJA DE SUPLEMENTOS <span class="text-muted d-none d-sm-inline m-2">- LOJA DE SUPLEMENTOS LTDA.</span></h4>
                     </div>
-                    <div class="m-5 text-center"> 
-                        <h3 class="fw-bold">INFORMAÇÕES ADICIONAIS</h3>
+                    <div class="m-3 text-center"> 
+                        <p class="fw-bold">INFORMAÇÕES ADICIONAIS</p>
                     </div>
                     <div class="card p-3 m-3">
                         <div class="card-body">
@@ -26,7 +31,7 @@ export default function HomeComponent(){
                         </div>
                     </div>
                     <div class="m-5 text-center fw-bold">
-                        <h3 class="fw-bold">DADOS CADASTRAIS</h3>
+                        <p class="fw-bold">DADOS CADASTRAIS</p>
                     </div>
                     <div class="accordion m-3" id="accordionExample">
                         <div class="accordion-item">
@@ -36,7 +41,7 @@ export default function HomeComponent(){
                             </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
+                                <div class="accordion-body" className={style.acordionBodyMb}>
                                     <div class="container p-3">
                                         <div class="row">
                                             <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Nome:</span></div>
@@ -58,7 +63,7 @@ export default function HomeComponent(){
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                            <div class="accordion-body" className={style.acordionBodyMb}>
                                     <div class="container p-3">
                                         <div class="row">
                                             <div class="col-6 p-1 col-sm-6"><span class="fw-bold">CNPJ:</span></div>
