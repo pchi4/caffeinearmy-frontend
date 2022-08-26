@@ -1,0 +1,47 @@
+
+
+.container{
+    width: 500px;
+    margin: 0 auto;
+    height: 100%;
+    margin-top: 100px;
+
+}
+
+.button{
+    width: 400px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.footerLogin{
+    text-align: center;
+    font-size: 10px;
+    margin-top: 70px;
+}
+
+.lojista{
+    background: var(--rosa) 0% 0% no-repeat padding-box;
+    background: #FB637E 0% 0% no-repeat padding-box;
+    padding: 5px;
+    color: white;
+    opacity: 1;
+}
+
+.imageLogin{
+    width: 800px!important;
+    height: 100vh!important;
+}
+
+.svgLogin{
+    width: 80%;
+    padding: 30px;
+}
+/* 
+@media (max-width: 500px){
+    .imageLogin{
+      display: none;
+    }
+  } */

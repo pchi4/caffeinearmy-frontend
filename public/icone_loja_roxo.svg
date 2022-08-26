@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="46" height="46" viewBox="0 0 46 46">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Retângulo_4246" data-name="Retângulo 4246" width="46" height="46" transform="translate(0.333 0.333)" fill="#8980bb"/>
+    </clipPath>
+  </defs>
+  <g id="icone_loja_roxo" transform="translate(-0.333 -0.333)">
+    <g id="Grupo_23266" data-name="Grupo 23266" transform="translate(0 0)" clip-path="url(#clip-path)">
+      <g id="Grupo_23263" data-name="Grupo 23263">
+        <g id="Grupo_23262" data-name="Grupo 23262" clip-path="url(#clip-path)">
+          <g id="Grupo_23261" data-name="Grupo 23261" opacity="0">
+            <g id="Grupo_23260" data-name="Grupo 23260">
+              <g id="Grupo_23259" data-name="Grupo 23259" clip-path="url(#clip-path)">
+                <rect id="Retângulo_4242" data-name="Retângulo 4242" width="46" height="46" transform="translate(0.333 0.333)" fill="#8980bb"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g id="Grupo_23265" data-name="Grupo 23265">
+        <g id="Grupo_23264" data-name="Grupo 23264" clip-path="url(#clip-path)">
+          <path id="Caminho_7300" data-name="Caminho 7300" d="M5.1,19.642a7.365,7.365,0,0,0,1.3.6V36.8A1.6,1.6,0,0,0,8,38.4H33.6a1.6,1.6,0,0,0,1.6-1.6V20.24a7.172,7.172,0,0,0,1.306-.6l1.118-.672A1.6,1.6,0,0,0,38.4,17.6V11.2a1.6,1.6,0,0,0-1.6-1.6H35.2V4.8a1.6,1.6,0,0,0-1.6-1.6H8A1.6,1.6,0,0,0,6.4,4.8V9.6H4.8a1.6,1.6,0,0,0-1.6,1.6v6.4a1.6,1.6,0,0,0,.778,1.372ZM18.4,28.8h4.8v6.4H18.4Zm8,6.4v-8a1.6,1.6,0,0,0-1.6-1.6h-8a1.6,1.6,0,0,0-1.6,1.6v8H9.6V20.618a7.21,7.21,0,0,0,2.906-.976l.294-.176.3.176a7.185,7.185,0,0,0,7.41,0l.294-.176.3.176a7.185,7.185,0,0,0,7.41,0l.294-.176.3.176A7.179,7.179,0,0,0,32,20.618V35.2ZM9.6,6.4H32V9.6H9.6ZM6.4,12.8H35.2v3.9l-.342.206a3.987,3.987,0,0,1-4.116,0l-1.118-.672a1.6,1.6,0,0,0-1.648,0l-1.118.672a3.987,3.987,0,0,1-4.116,0l-1.118-.672a1.594,1.594,0,0,0-1.648,0l-1.118.672a3.987,3.987,0,0,1-4.116,0l-1.118-.672a1.594,1.594,0,0,0-1.648,0l-1.118.672a3.987,3.987,0,0,1-4.116,0L6.4,16.692Z" transform="translate(2.533 2.533)" fill="#8980bb"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
