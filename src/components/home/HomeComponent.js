@@ -1,8 +1,23 @@
+
 import NavBar from "../layouts/NavBar";
 import style from '../home/HomeComponent.module.css'
 import { FaArrowRight } from 'react-icons/fa'
+import api from "../../api/api";
+import { useState } from "react";
 
 export default function HomeComponent(){
+
+    const [cnpj, setCnpj] = useState()
+    const [empresa, setEmpresa] = useState(); 
+    console.log(empresa)
+
+    function formSubmit (event){
+        event.preventDefault();
+        api.get(`/empresa/${cnpj}`)
+        .then(res => setEmpresa(res.data))
+        .catch((error)=> console.log(error)) 
+    }
+
     return(
         <div>
             <NavBar></NavBar>
@@ -10,13 +25,13 @@ export default function HomeComponent(){
             <div class="d-sm" className={style.background}>
                 <div className={style.content}>
                     <div class="d-flex justify-content-evenly align-items-center">
-                        <div class="mb-3 w-75 p-3">
-                            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Digite um CNPJ"></input>
-                        </div>  
-                        <div class="mb-3"> 
-                            <button class="btn btn-danger d-sm-block d-none m-2"><FaArrowRight/></button>
-                            <button class="ml-3 btn btn-danger d-none d-sm-block m-2" type="button">Buscar Loja</button>
-                        </div>       
+                        <form class="form-control"  onSubmit={formSubmit}>
+                            <div class="mb-3 p-3">
+                                <input type="text" class="form-control w-75" name="cnpj" onChange={(e) => setCnpj(e.target.value)} placeholder="Digite um CNPJ"></input>
+                                <button class="btn btn-danger d-none d-sm-block m-2"><FaArrowRight/></button>
+                                <button class="ml-3 btn btn-danger d-none d-sm-block m-2" type="submit">Buscar Loja</button>
+                            </div>        
+                        </form>   
                     </div>
                     <div class="h4 pb-2 mb-4 text-danger border-bottom border-muted"></div>
                     <div class="m-3 p-1 text-center">
@@ -33,52 +48,52 @@ export default function HomeComponent(){
                     <div class="m-5 text-center fw-bold">
                         <p class="fw-bold">DADOS CADASTRAIS</p>
                     </div>
-                    <div class="accordion m-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                LOJISTA
-                            </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                <div class="accordion-body" className={style.acordionBodyMb}>
-                                    <div class="container p-3">
-                                        <div class="row">
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Nome:</span></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Telefon 1:</span></div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Email:</span></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Telefone 2:</span></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion m-3" id="accordionExample">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    DADOS DA LOJA
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body" className={style.acordionBodyMb}>
-                                    <div class="container p-3">
-                                        <div class="row">
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">CNPJ:</span></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">E-mail:</span></div>
-                                            <div class="w-100"></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Nome Fantasia:</span></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Telefone:</span></div>
-                                            <div class="col-6 p-1 col-sm-6"><span class="fw-bold">Razão Social:</span></div>
-                                        </div>
-                                    </div>
+                </div>
+                <div class="accordion m-3" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        LOJISTA
+                    </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body" className={style.acordionBodyMb}>
+                            <div class="container p-3">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Nome: </span></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Telefon1: </span></div>
+                                    <div class="w-100"></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Email: </span></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Telefone2: </span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="accordion m-3" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            DADOS DA LOJA
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body" className={style.acordionBodyMb}>
+                            <div class="container p-3">
+                                <div class="row">
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">CNPJ: </span></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">E-mail:  </span></div>
+                                    <div class="w-100"></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Nome Fantasia:</span></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Telefone: </span></div>
+                                    <div class="col-12 col-md-6 p-1 "><span class="fw-bold">Razão Social: </span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
     )
