@@ -3,6 +3,8 @@ import { FaArrowRight } from 'react-icons/fa'
 export default function FormBuscarLoja(props){
     return (
         <div>
+
+            
              <div className="d-flex justify-content-evenly align-items-center">
                 <form className="form-control"  onSubmit={props.formSubmit}>
                     <div className="input-group">

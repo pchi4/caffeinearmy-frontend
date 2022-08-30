@@ -1,8 +1,8 @@
 
 import api from "../../api/api";
-import { useState } from "react";
+import React, { useState } from "react";
 import NavBar from "../layouts/NavBar";
-import style from '../home/HomeComponent.module.css'
+import './style.css';
 import CollapseLojista from "./collapse/collapseLojista";
 import CollapseEmpresa from "./collapse/collapseEmpresa";
 import ConteudoHome from "./conteudo/conteudoHome";
@@ -24,9 +24,9 @@ export default function HomeComponent(){
     return(
         <div>
             <NavBar></NavBar>
-            <div class="text-danger border-bottom border-muted"></div>
-            <div class="d-sm" className={style.background}>
-                <div className={style.content}>  
+            <div className="text-danger border-bottom border-muted"></div>
+            <div className="md">
+                <div>  
                     <FormBuscarLoja formSubmit={formSubmit} setCnpj={setCnpj}/>              
                     <ConteudoHome />
                 </div>
