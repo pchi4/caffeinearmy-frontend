@@ -1,25 +1,25 @@
-import './style.css';
+import style from '../HomeStyle.module.css';
 
 export default function CollapseEmpresa({empresa}){
     return(
-        <div>
-            <div className="accordion m-3" id="accordionExample">
-                <div className="accordion-item">
-                    <h2 className="accordion-header" id="headingOne">
-                        <button className="accordion-button fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <div className={style.collapse}>
+            <div class="accordion m-3" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button text-dark fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                             DADOS DA LOJA
                         </button>
                     </h2>
-                    <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                    <div className="accordion-body">
-                            <div className="container p-3">
-                                <div className="row">
-                                    <div className="col-12 col-md-6 p-1"><span><span className="fw-bold">CNPJ:</span> {empresa.cnpj}</span></div>
-                                    <div className="col-12 col-md-6 p-1"><span><span className="fw-bold">E-mail:</span> {empresa.email}</span></div>
-                                    <div className="w-100"></div>
-                                    <div className="col-12 col-md-6 p-1"><span><span className="fw-bold">Nome Fantasia:</span> {empresa.nomeFantasia}</span></div>
-                                    <div className="col-12 col-md-6 p-1"><span><span className="fw-bold">Telefone:</span> {empresa.telefone}</span></div>
-                                    <div className="col-12 col-md-6 p-1"><span ><span className="fw-bold">Razão Social:</span> {empresa.razaoSocial}</span></div>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body" className={style.acordionBodyMb}>
+                            <div class="container p-3" className={style.backMobile}>
+                                <div class="row p-3">
+                                    <div class="col-12 col-md-6 col-sm-6 p-1 "><span><span class="fw-bold">CNPJ:</span> {empresa.cnpj}</span></div>
+                                    <div class="col-12 col-md-6 col-sm-6 p-1 "><span><span class="fw-bold">E-mail:</span> {empresa.email}</span></div>
+                                    <div class="w-100"></div>
+                                    <div class="col-12 col-md-6 col-sm-6 p-1 "><span><span class="fw-bold">Nome Fantasia:</span> {empresa.nomeFantasia}</span></div>
+                                    <div class="col-12 col-md-6 col-sm-6 p-1 "><span><span class="fw-bold">Telefone:</span> {empresa.telefone}</span></div>
+                                    <div class="col-12 col-md-6 col-sm-6 p-1 "><span ><span class="fw-bold">Razão Social:</span> {empresa.razaoSocial}</span></div>
                                 </div>
                             </div>
                         </div>

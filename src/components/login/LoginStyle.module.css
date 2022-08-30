@@ -1,0 +1,87 @@
+
+
+.container{
+    width: 550px;
+    margin: 0 auto;
+    height: 100%;
+    margin-top: 100px;
+
+}
+
+.button{
+    width: 400px;
+}
+
+.titulo{
+    text-align: center;
+}
+
+.footerLogin{
+    text-align: center;
+    font-size: 10px;
+    margin-top: 70px;
+}
+
+.pink{
+    background: #FB637E;
+    border: 1px solid #FB6381;
+    padding: 5px;
+    border-radius: 6px;
+    color: white;
+    font-weight: 500;
+}
+
+.lojista{
+    background: var(--rosa) 0% 0% no-repeat padding-box;
+    background: #FB637E 0% 0% no-repeat padding-box;
+    padding: 5px;
+    color: white;
+    opacity: 1;
+}
+
+.textFooter{
+    margin-top: 100px;
+    text-align: center;
+}
+
+.imageLogin{
+    width: 100%;
+    height: 100vh;
+}
+
+.svgLogin{
+    width: 80%;
+    padding: 30px;
+}
+
+.containerLogin{
+    display: flex;
+}
+
+@media (max-width: 500px){
+    .imageLogin{
+       width: 100%;
+       height: 40vh; 
+    }
+
+    .footerLogin{
+        display: none;
+    }
+
+    .container{
+        width: auto;
+        margin-top: 20px;
+    }
+
+    .containerLogin{
+        display: block;
+    }
+
+
+  }
+
+  /* @media ( max-width:800px){
+    .imageLogin{
+        width: 100%;
+    }
+  } */
