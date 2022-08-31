@@ -40,7 +40,7 @@ export default function ModalCadastroUser() {
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      <Button variant="primary" className="w-100" onClick={handleShow}>
         Cadastre-se
       </Button>
 
