@@ -12,13 +12,14 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 import { faCheckSquare, faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { BrowserRouter } from 'react-router-dom'
 
 library.add(fab, faCheckSquare, faCoffee);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <BrowserRouter>
+    <App/>
+  </BrowserRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
