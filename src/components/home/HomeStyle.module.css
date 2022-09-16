@@ -125,4 +125,7 @@
     .backMobileCard{
         background-color: #f0efef!important;
     }
+    .content{
+        padding: 0;
+    }
 }
