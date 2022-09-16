@@ -1,25 +1,39 @@
 import { useState } from 'react';
-import api from '../../api/api';
 import { login } from '../../services/auth';
+import api from '../../api/api';
 import ModalCadastroUser from '../home/modal/ModalCadastroUser';
 import styles from '../login/LoginStyle.module.css';
 import ImagemComponent from './ImagemComponent';
+import { useHistory } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
 
 export default function LoginComponent (){
+
+    let history = useHistory();
+
+    const MySwal = withReactContent(Swal)
 
     const [ username, setUsername ] = useState();
     const [ password, setPassword ] = useState();
 
     async function Login(e) {
         e.preventDefault();
-        if(!username || !password){
-            console.log('erro')
+        if(username === '' || password === ''){
+            MySwal.fire({
+                title: "Ops",
+                text: "Credenciais erradas",
+                icon:'error',
+                confirmButtonText:'Ok'
+            })
         }else{
-
+            
             try {
-                const response = await api.post('/usuario/login', {username, password});
+                const response = await api.post('/usuario/login',{username,password});
                 login(response.data.token);
-                this.props.history.push('/home')
+                history.push('/home')
+
             } catch(err){
                 console.log(err)
             }
@@ -44,20 +58,22 @@ export default function LoginComponent (){
                         className='form-control' 
                         id='exampleFormControlInput1' 
                         placeholder='Seu email'
-                        onChange={e => setUsername({ username: e.target.value})}></input>
+                        onChange={e => setUsername(e.target.value)}></input>
                     </div>
                     <div className='mb-4'>
-                        <label className='form-label'>Senha</label>
+                        <label for="exampleFormControlInput1" className='form-label'>Senha</label>
                         <input className='form-control'
+                            id="exampleFormControlInput1"
+                            type="password"
                             placeholder='Sua senha'
-                            onChange={e => setPassword({ password: e.target.value})}></input>
+                            onChange={e => setPassword(e.target.value)}></input>
                     </div>
                     <div className='d-grid gap-2 mt-4'>
                         <button class='btn' className={styles.pink} type='submit'>Entrar</button>
                     </div>
                 </form>
                 <div class="m-4">
-                    <p>Caso você não tenha acesso ao sistema, preciso que cadastre-se</p>
+                    <p className='text-center'>Caso você não tenha acesso ao sistema, preciso que cadastre-se</p>
                     <ModalCadastroUser />
                 </div>
                 <div className={styles.textFooter}>

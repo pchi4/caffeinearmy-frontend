@@ -4,7 +4,7 @@ import  HomeComponent from '../components/home/HomeComponent';
 import  LoginComponent from '../components/login/LoginComponent';
 import  NotFound from '../components/not-found/NotFound';
 
-export function Rotas() {
+export default function Rotas() {
 
   const PrivateRoute = ({ component: Component, ...rest}) => (
     <Route
@@ -13,12 +13,7 @@ export function Rotas() {
         isAuthenticated() ? (
           <Component {...props}/> 
         ) : (
-          <Redirect 
-            to={{
-              pathname: '/',
-              state: { from: props.location },
-            }}
-          />
+          <Redirect to={{pathname: '/', state: { from: props.location },}}/>
         )
       }
     />
