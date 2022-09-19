@@ -21,7 +21,6 @@ export default function HomeComponent(){
         
         api.get(`/empresa/${regexCnpj}`)
         .then(res =>{
-            console.log(res.data) 
             setEmpresa(res.data)
         })
         .catch((error)=> console.log(error)) 

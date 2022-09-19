@@ -52,19 +52,19 @@ export default function ModalCadastroUser() {
         <form>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Nome:</label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Seu nome" name="nome" onChange={(e)=>setNome(e.target.value)}/>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Seu nome" onChange={(e)=>setNome(e.target.value)}/>
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Email: </label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" name="nome" onChange={(e)=>setEmail(e.target.value)} />
+                  <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com" onChange={(e)=>setEmail(e.target.value)} />
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Telefone: </label>
-                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="(xx) x-xxxx-xxxx" name="nome" onChange={(e)=>setTelefone(e.target.value)}/>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="(xx) x-xxxx-xxxx" onChange={(e)=>setTelefone(e.target.value)}/>
               </div>
               <div class="mb-3">
                   <label for="exampleFormControlInput1" class="form-label">Senha</label>
-                  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Sua senha" name="nome" onChange={(e)=>setSenha(e.target.value)} />
+                  <input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Sua senha" onChange={(e)=>setSenha(e.target.value)} />
               </div>
               {
                 showAlert &&   <Alert variant="success">

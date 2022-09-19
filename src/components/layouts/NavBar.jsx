@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
  
-function NavBar(){
+export default function NavBar(){
 
     let history = useHistory();
     const MySwal = withReactContent(Swal)
@@ -20,11 +20,12 @@ function NavBar(){
             cancelButtonColor: '#d33',
         }).then((result) => {
             if (result.isConfirmed) {
-                MySwal.fire(
-                    'Logout feito com sucesso.',
-                )
+                MySwal.fire({
+                    title: 'Logout feito com sucesso.',
+                    icon: 'success'
+                })
+                logout()
                 setTimeout(()=>{
-                    logout()
                     history.push('/')
                 },2000)
             }   
@@ -43,13 +44,11 @@ function NavBar(){
                         <a class="fw-bold text-center text-dark d-none d-sm-block text-decoration-none" href="/home"><span id="lojas" className={styles.lojas}>Lojas</span></a>
                     </li>
                     <li class="nav-item text-center p-1">
-                        <a class="fw-bold text-center text-dark text-decoration-none" onClick={Logout}><img class="nav-link" alt="icone" src="/icone_sair.svg"></img></a>
-                        <a class="fw-bold  d-none d-sm-block text-dark text-decoration-none" onClick={Logout} ><span id="logout" className={styles.logout}>Sair</span></a>
+                        <a class="fw-bold text-center text-dark text-decoration-none" onClick={Logout} href={() => false}><img class="nav-link" alt="icone" src="/icone_sair.svg"></img></a>
+                        <a class="fw-bold  d-none d-sm-block text-dark text-decoration-none" onClick={Logout} href={() => false} ><span id="logout" className={styles.logout}>Sair</span></a>
                     </li> 
                 </ul>
             </div>
         </nav>
     )
 }
-
-export default NavBar; 
