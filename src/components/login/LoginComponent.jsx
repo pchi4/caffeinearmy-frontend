@@ -4,7 +4,7 @@ import api from '../../api/api';
 import ModalCadastroUser from '../home/modal/ModalCadastroUser';
 import styles from '../login/LoginStyle.module.css';
 import ImagemComponent from './ImagemComponent';
-import { useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -32,7 +32,7 @@ export default function LoginComponent (){
             try {
                 const response = await api.post('/usuario/login',{username,password});
                 login(response.data.token);
-                history.push('/home')
+                history.push("/home")
 
             } catch(err){
                 console.log(err)
@@ -51,7 +51,7 @@ export default function LoginComponent (){
                     <img src='/marca_lojistas.svg' alt='marca lojistas' className={styles.svgLogin}></img> <br></br>
                     <span className='d-none d-sm-block'><strong>Acesse com seu email e senha abaixo</strong></span>
                 </div>
-                <form className='m-4' onSubmit={Login}>
+                <form className='m-4'>
                     <div className='mb-4'>
                         <label className='form-label'>Seu e-mail</label>
                         <input type='email' 
@@ -69,7 +69,7 @@ export default function LoginComponent (){
                             onChange={e => setPassword(e.target.value)}></input>
                     </div>
                     <div className='d-grid gap-2 mt-4'>
-                        <button class='btn' className={styles.pink} type='submit'>Entrar</button>
+                        <button class='btn' className={styles.pink}  onClick={Login}>Entrar</button>
                     </div>
                 </form>
                 <div class="m-4">
@@ -77,9 +77,9 @@ export default function LoginComponent (){
                     <ModalCadastroUser />
                 </div>
                 <div className={styles.textFooter}>
-                    <span className='d-none d-sm-block fw-lighter text-center fs-6 p-2'> © 2021 Caffeine Army. CNPJ: 27.403.527/0001-13</span>
-                    <span className='d-none d-sm-block fw-lighter text-center fs-6 p-2'>Endereço: Rua Rubens Guelli, 68, Itaigara, Salvador - BA, 41815-135</span>
-                    <span className='d-none d-sm-block fw-lighter text-center fs-6 p-2'>E-mail: <a href="/#">contato@caffeinearmy.com.br</a> | Telefone: <a href="/#"> +55 11 91106-4910</a>.</span>
+                    <span className='d-none d-sm-block fw-lighter text-center fs-6'> © 2021 Caffeine Army. CNPJ: 27.403.527/0001-13</span>
+                    <span className='d-none d-sm-block fw-lighter text-center fs-6'>Endereço: Rua Rubens Guelli, 68, Itaigara, Salvador - BA, 41815-135</span>
+                    <span className='d-none d-sm-block fw-lighter text-center fs-6'>E-mail: <a href="/#">contato@caffeinearmy.com.br</a> | Telefone: <a href="/#"> +55 11 91106-4910</a>.</span>
                 </div>
             </div>
         </div>
