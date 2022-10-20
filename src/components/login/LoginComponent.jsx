@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { login } from '../../services/auth';
+import { useHistory } from 'react-router-dom';
 import api from '../../api/api';
 import ModalCadastroUser from '../home/modal/ModalCadastroUser';
 import styles from '../login/LoginStyle.module.css';
 import ImagemComponent from './ImagemComponent';
-import { useHistory } from 'react-router-dom';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 
@@ -55,15 +55,13 @@ export default function LoginComponent (){
                     <div className='mb-4'>
                         <label className='form-label'>Seu e-mail</label>
                         <input type='email' 
-                        className='form-control' 
-                        id='exampleFormControlInput1' 
-                        placeholder='Seu email'
-                        onChange={e => setUsername(e.target.value)}></input>
+                            className='form-control'  
+                            placeholder='Seu email'
+                            onChange={e => setUsername(e.target.value)}></input>
                     </div>
                     <div className='mb-4'>
-                        <label for="exampleFormControlInput1" className='form-label'>Senha</label>
+                        <label className='form-label'>Senha</label>
                         <input className='form-control'
-                            id="exampleFormControlInput1"
                             type="password"
                             placeholder='Sua senha'
                             onChange={e => setPassword(e.target.value)}></input>
@@ -79,7 +77,7 @@ export default function LoginComponent (){
                 <div className={styles.textFooter}>
                     <span className='d-none d-sm-block fw-lighter text-center fs-6'> © 2021 Caffeine Army. CNPJ: 27.403.527/0001-13</span>
                     <span className='d-none d-sm-block fw-lighter text-center fs-6'>Endereço: Rua Rubens Guelli, 68, Itaigara, Salvador - BA, 41815-135</span>
-                    <span className='d-none d-sm-block fw-lighter text-center fs-6'>E-mail: <a href="/#">contato@caffeinearmy.com.br</a> | Telefone: <a href="/#"> +55 11 91106-4910</a>.</span>
+                    <span className='d-none d-sm-block fw-lighter text-center fs-6'>E-mail: <a href={() => false} >contato@caffeinearmy.com.br</a> | Telefone: <a href={() => false} > +55 11 91106-4910</a>.</span>
                 </div>
             </div>
         </div>
