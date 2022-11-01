@@ -71,7 +71,7 @@
 }
 
 .iconInput{
-    position: fixed;
+    position: absolute;
     z-index: 5;
     margin-top: 20px;
     margin-left: 15px;

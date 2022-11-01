@@ -20,9 +20,7 @@ export default function HomeComponent(){
         const regexCnpj = cnpj.replace(/[^\d]+/g, "")
         
         api.get(`/empresa/${regexCnpj}`)
-        .then(res =>{
-            setEmpresa(res.data)
-        })
+        .then(res => setEmpresa(res.data))
         .catch((error)=> console.log(error)) 
     }
 
