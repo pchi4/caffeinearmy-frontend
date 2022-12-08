@@ -1,41 +1,30 @@
 import React, { useState } from "react";
 import { Modal, Button, Alert } from "react-bootstrap";
+import { useForm } from "react-hook-form";
 import api from "../../../api/api";
 
 export default function ModalCadastroUser() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
-  const [nome, setNome] = useState();
-  const [email, setEmail] = useState();
-  const [telefone, setTelefone] = useState();
-  const [senha, setSenha] = useState();
   const [showAlert, setAlert] = useState(false);
+  const [showForm, setForm] = useState(true);
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const registerUSer = data => {
+    try {
+      api.post(`/usuario/cadastrar`, data)
+      setAlert(true);
+      setForm(false)
 
-  let user = {
-    name: nome,
-    email: email,
-    telefone: telefone,
-    password: senha,
-  };
+      setTimeout(() => {
+        setAlert(false);
+        handleClose();
+        setForm(true)
+      }, 3000);
 
-  function handleClick(event) {
-    event.preventDefault();
-
-    api
-      .post(`/usuario/cadastrar`, user)
-      .then((res) => {
-        console.log(res.data);
-        setAlert(true);
-
-        setTimeout(() => {
-          setAlert(false);
-          handleClose();
-        }, 3000);
-      })
-      .catch((error) => console.log(error));
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -49,7 +38,7 @@ export default function ModalCadastroUser() {
           <Modal.Title>Cadastro de Usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form>
+          {showForm && (<form>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">
                 Nome:
@@ -57,10 +46,11 @@ export default function ModalCadastroUser() {
               <input
                 type="text"
                 class="form-control"
-                id="exampleFormControlInput1"
                 placeholder="Seu nome"
-                onChange={(e) => setNome(e.target.value)}
+                {...register("name", { required: "Nome é obrigatório" })}
+                aria-invalid={errors.name ? "true" : "false"}
               />
+              {errors.name && <p className="text-danger" role="alert">{errors.name?.message}</p>}
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">
@@ -69,10 +59,11 @@ export default function ModalCadastroUser() {
               <input
                 type="email"
                 class="form-control"
-                id="exampleFormControlInput1"
                 placeholder="name@example.com"
-                onChange={(e) => setEmail(e.target.value)}
+                {...register("email", { required: "Email é obrigatório" })}
+                aria-invalid={errors.email ? "true" : "false"}
               />
+              {errors.email && <p className="text-danger" role="alert">{errors.email?.message}</p>}
             </div>
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">
@@ -81,9 +72,9 @@ export default function ModalCadastroUser() {
               <input
                 type="text"
                 class="form-control"
-                id="exampleFormControlInput1"
                 placeholder="(xx) x-xxxx-xxxx"
-                onChange={(e) => setTelefone(e.target.value)}
+
+                {...register("telefone", { require: 'This is required' })}
               />
             </div>
             <div class="mb-3">
@@ -93,21 +84,27 @@ export default function ModalCadastroUser() {
               <input
                 type="password"
                 class="form-control"
-                id="exampleFormControlInput1"
                 placeholder="Sua senha"
-                onChange={(e) => setSenha(e.target.value)}
+                {...register("password", {
+                  required: "Senha é obrigatório",
+                  minLength: {
+                    value: 8,
+                    message: "Senha muito pequena"
+                  }
+                })}
               />
+              <p className="text-danger" role="alert">{errors.password?.message}</p>
             </div>
-            {showAlert && (
-              <Alert variant="success">Cadastro realizado com sucesso!</Alert>
-            )}
-          </form>
+          </form>)}
+          {showAlert && (
+            <Alert variant="success">Cadastro realizado com sucesso!</Alert>
+          )}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleClick}>
+          <Button variant="primary" onClick={handleSubmit(registerUSer)}>
             Cadastrar
           </Button>
         </Modal.Footer>
