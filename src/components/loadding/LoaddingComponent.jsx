@@ -1,9 +1,11 @@
+import { Spinner } from "react-bootstrap";
+
 export default function LoaddingComponent() {
   return (
-    <div class="d-flex justify-content-center">
-      <div class="spinner-border m-5" role="status">
-        <span class="sr-only"></span>
+    <Spinner className="d-flex justify-content-center">
+      <div className="spinner-border m-5" role="status">
+        <span className="sr-only"></span>
       </div>
-    </div>
+    </Spinner>
   );
 }

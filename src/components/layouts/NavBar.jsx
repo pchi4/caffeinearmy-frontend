@@ -3,6 +3,7 @@ import { logout } from "../../services/auth";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { Navbar, Container } from "react-bootstrap";
 
 export default function NavBar() {
   let history = useHistory();
@@ -30,8 +31,8 @@ export default function NavBar() {
     });
   }
   return (
-    <nav class="navbar">
-      <div class="container-fluid">
+    <Navbar class="navbar">
+      <Container>
         <div className={styles.divW}>
           <img
             src="/marca_lojistas.svg"
@@ -76,7 +77,7 @@ export default function NavBar() {
             </a>
           </li>
         </ul>
-      </div>
-    </nav>
+      </Container>
+    </Navbar>
   );
 }

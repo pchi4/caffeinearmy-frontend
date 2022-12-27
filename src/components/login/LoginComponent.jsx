@@ -8,18 +8,18 @@ import { login } from "../../services/auth";
 import { useHistory } from "react-router-dom";
 import api from "../../api/api";
 import styles from "../login/LoginStyle.module.css";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
+// import Swal from "sweetalert2";
+// import withReactContent from "sweetalert2-react-content";
+import { Alert } from "react-bootstrap";
 
 export default function LoginComponent() {
   let history = useHistory();
-
-  const MySwal = withReactContent(Swal);
 
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [showLoadding, setLoadding] = useState(false);
   const [showForm, setForm] = useState(true);
+  const [showAlert, setAlert] = useState(false);
 
   async function Login(e) {
     e.preventDefault();
@@ -32,12 +32,16 @@ export default function LoginComponent() {
         username,
         password,
       });
+
       login(response.data.token);
       findUser(response.data.id);
       setLoadding(false);
       setForm(true);
     } catch (err) {
       console.log(err);
+      setLoadding(false);
+      setForm(true)
+      setAlert(true)
     }
   }
 
@@ -47,15 +51,9 @@ export default function LoginComponent() {
       let usuario = req.data;
 
       if (usuario.email === username) {
-        history.push("/home");
-      } else {
-        MySwal.fire({
-          title: "Ops",
-          text: "Credenciais erradas",
-          icon: "warning",
-          confirmButtonText: "Ok",
-        });
+        return history.push("/home");
       }
+
     } catch (error) {
       console.log(error);
     }
@@ -79,6 +77,9 @@ export default function LoginComponent() {
           </span>
         </div>
         {showLoadding && <LoaddingComponent />}
+        {showAlert && (
+          <Alert variant="danger">Error ao tentar realizar o login</Alert>
+        )}
         {showForm && (
           <FormLogin
             Login={Login}

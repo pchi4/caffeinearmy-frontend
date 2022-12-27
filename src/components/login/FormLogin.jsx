@@ -1,31 +1,32 @@
 import styles from "./LoginStyle.module.css";
+import { Button, Form } from "react-bootstrap";
 
 export default function FormLogin(props) {
   return (
-    <form className="m-4">
-      <div className="mb-4">
-        <label className="form-label">Seu e-mail</label>
-        <input
+    <Form className="m-4">
+      <Form.Group className="mb-4">
+        <Form.Label className="form-label">Seu e-mail</Form.Label>
+        <Form.Control
           type="email"
           className="form-control"
           placeholder="Seu email"
           onChange={(e) => props.setUsername(e.target.value)}
-        ></input>
-      </div>
-      <div className="mb-4">
-        <label className="form-label">Senha</label>
-        <input
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className="mb-4">
+        <Form.Label className="form-label">Senha</Form.Label>
+        <Form.Control
           className="form-control"
           type="password"
           placeholder="Sua senha"
           onChange={(e) => props.setPassword(e.target.value)}
-        ></input>
-      </div>
-      <div className="d-grid gap-2 mt-4">
-        <button class="btn" className={styles.pink} onClick={props.Login}>
+        ></Form.Control>
+      </Form.Group>
+      <Form.Group className="d-grid gap-2 mt-4">
+        <Button class="btn" className={styles.pink} onClick={props.Login}>
           Entrar
-        </button>
-      </div>
-    </form>
+        </Button>
+      </Form.Group>
+    </Form>
   );
 }

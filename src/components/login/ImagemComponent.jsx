@@ -1,7 +1,8 @@
 import styles from "../login/LoginStyle.module.css";
+import { Image } from "react-bootstrap";
 
 function ImagemComponent() {
-  return <img src="/logo.png" className={styles.imageLogin} alt="logo"></img>;
+  return <Image src="/logo.png" fluid="true" className={styles.imageLogin} alt="logo"></Image>;
 }
 
 export default ImagemComponent;

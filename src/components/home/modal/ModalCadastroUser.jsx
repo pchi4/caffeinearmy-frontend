@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Button, Alert } from "react-bootstrap";
+import { Modal, Button, Alert, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import api from "../../../api/api";
 
@@ -10,7 +10,7 @@ export default function ModalCadastroUser() {
   const [showAlert, setAlert] = useState(false);
   const [showForm, setForm] = useState(true);
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const registerUSer = data => {
+  const registerUser = data => {
     try {
       api.post(`/usuario/cadastrar`, data)
       setAlert(true);
@@ -38,52 +38,50 @@ export default function ModalCadastroUser() {
           <Modal.Title>Cadastro de Usuário</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {showForm && (<form>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
+          {showForm && (<Form>
+            <Form.Group className="mb-3">
+              <Form.Label className="form-label">
                 Nome:
-              </label>
-              <input
+              </Form.Label>
+              <Form.Control
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="Seu nome"
                 {...register("name", { required: "Nome é obrigatório" })}
                 aria-invalid={errors.name ? "true" : "false"}
               />
               {errors.name && <p className="text-danger" role="alert">{errors.name?.message}</p>}
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="form-label">
                 Email:{" "}
-              </label>
-              <input
+              </Form.Label>
+              <Form.Control
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="name@example.com"
                 {...register("email", { required: "Email é obrigatório" })}
                 aria-invalid={errors.email ? "true" : "false"}
               />
               {errors.email && <p className="text-danger" role="alert">{errors.email?.message}</p>}
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
+            </Form.Group>
+            <Form.Group class="mb-3">
+              <Form.Label className="form-label">
                 Telefone:{" "}
-              </label>
-              <input
+              </Form.Label>
+              <Form.Control
                 type="text"
                 class="form-control"
                 placeholder="(xx) x-xxxx-xxxx"
-
-                {...register("telefone", { require: 'This is required' })}
               />
-            </div>
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="form-label">
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label className="form-label">
                 Senha
-              </label>
-              <input
+              </Form.Label>
+              <Form.Control
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Sua senha"
                 {...register("password", {
                   required: "Senha é obrigatório",
@@ -94,8 +92,8 @@ export default function ModalCadastroUser() {
                 })}
               />
               <p className="text-danger" role="alert">{errors.password?.message}</p>
-            </div>
-          </form>)}
+            </Form.Group>
+          </Form>)}
           {showAlert && (
             <Alert variant="success">Cadastro realizado com sucesso!</Alert>
           )}
@@ -104,7 +102,7 @@ export default function ModalCadastroUser() {
           <Button variant="secondary" onClick={handleClose}>
             Cancelar
           </Button>
-          <Button variant="primary" onClick={handleSubmit(registerUSer)}>
+          <Button variant="primary" onClick={handleSubmit(registerUser)}>
             Cadastrar
           </Button>
         </Modal.Footer>
