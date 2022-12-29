@@ -1,5 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { logout } from "../../services/auth";
 
 export default function NotFound() {
     let history = useHistory();
@@ -7,6 +8,7 @@ export default function NotFound() {
     function redirectTo(e) {
         e.preventDefault();
         history.push('/')
+        logout()
     }
 
     return (

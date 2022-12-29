@@ -13,9 +13,9 @@ export default function NavBar() {
     MySwal.fire({
       title: "Deseja sair?",
       icon: "warning",
+      showCancelButton: true,
       confirmButtonColor: "#3085d6",
       confirmButtonText: "Sair",
-      showCancelButton: true,
       cancelButtonColor: "#d33",
     }).then((result) => {
       if (result.isConfirmed) {
