@@ -50,7 +50,7 @@ export default function ModalCadastroUser() {
                 {...register("name", { required: "Nome é obrigatório" })}
                 aria-invalid={errors.name ? "true" : "false"}
               />
-              {errors.name && <p className="text-danger" role="alert">{errors.name?.message}</p>}
+              {errors.name && <p className="text-danger my-1" role="alert"><strong>{errors.name?.message}</strong></p>}
             </Form.Group>
             <Form.Group className="mb-3">
               <Form.Label className="form-label">
@@ -63,7 +63,7 @@ export default function ModalCadastroUser() {
                 {...register("email", { required: "Email é obrigatório" })}
                 aria-invalid={errors.email ? "true" : "false"}
               />
-              {errors.email && <p className="text-danger" role="alert">{errors.email?.message}</p>}
+              {errors.email && <p className="text-danger my-1" role="alert"><strong>{errors.email?.message}</strong></p>}
             </Form.Group>
             <Form.Group class="mb-3">
               <Form.Label className="form-label">
@@ -91,7 +91,7 @@ export default function ModalCadastroUser() {
                   }
                 })}
               />
-              <p className="text-danger" role="alert">{errors.password?.message}</p>
+              <p className="text-danger my-1" role="alert"><strong>{errors.password?.message}</strong></p>
             </Form.Group>
           </Form>)}
           {showAlert && (

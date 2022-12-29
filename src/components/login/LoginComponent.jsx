@@ -42,6 +42,9 @@ export default function LoginComponent() {
       setLoadding(false);
       setForm(true)
       setAlert(true)
+      setTimeout(() => {
+        setAlert(false)
+      }, 3000)
     }
   }
 
