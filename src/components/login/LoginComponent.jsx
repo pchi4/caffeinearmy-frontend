@@ -36,7 +36,7 @@ export default function LoginComponent() {
       login(response.data.token);
       findUser(response.data.id);
       setLoadding(false);
-      setForm(true);
+      setForm(false);
     } catch (err) {
       console.log(err);
       setLoadding(false);

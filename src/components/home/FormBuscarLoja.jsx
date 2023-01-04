@@ -32,7 +32,7 @@ export default function FormBuscarLoja(props) {
                 name="cnpj"
                 onChange={(e) => props.setCnpj(e.target.value)}
                 placeholder="         Digite um CNPJ"
-                onKeyDown={noneInput}
+                onFocus={noneInput}
                 {...register("cnpj", {
                   required: "CNPJ é obrigatório",
                   minLength: {
