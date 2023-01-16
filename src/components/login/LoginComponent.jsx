@@ -4,63 +4,29 @@ import LoaddingComponent from "../loadding/LoaddingComponent";
 import FormLogin from "./FormLogin";
 import FooterLogin from "./FooterLogin";
 import { useState } from "react";
-import { login } from "../../services/auth";
-import { useHistory } from "react-router-dom";
-import api from "../../api/api";
 import styles from "../login/LoginStyle.module.css";
+
 // import Swal from "sweetalert2";
 // import withReactContent from "sweetalert2-react-content";
 import { Alert } from "react-bootstrap";
 
-export default function LoginComponent() {
-  let history = useHistory();
 
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
+export default function LoginComponent(props) {
+
+
   const [showLoadding, setLoadding] = useState(false);
   const [showForm, setForm] = useState(true);
   const [showAlert, setAlert] = useState(false);
 
-  async function Login(e) {
-    e.preventDefault();
+  /*     async function Login(e) {
+        e.preventDefault();
+  
+        setLoadding(true);
+        setForm(false);
+  
+  
+      } */
 
-    setLoadding(true);
-    setForm(false);
-
-    try {
-      const response = await api.post("/usuario/login", {
-        username,
-        password,
-      });
-
-      login(response.data.token);
-      findUser(response.data.id);
-      setLoadding(false);
-      setForm(true);
-    } catch (err) {
-      console.log(err);
-      setLoadding(false);
-      setForm(true)
-      setAlert(true)
-      setTimeout(() => {
-        setAlert(false)
-      }, 3000)
-    }
-  }
-
-  const findUser = async (id) => {
-    try {
-      const req = await api.get(`usuario/${id}`);
-      let usuario = req.data;
-
-      if (usuario.email === username) {
-        return history.push("/home");
-      }
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   return (
     <div className={styles.containerLogin}>
@@ -84,11 +50,7 @@ export default function LoginComponent() {
           <Alert variant="danger">Error ao tentar realizar o login</Alert>
         )}
         {showForm && (
-          <FormLogin
-            Login={Login}
-            setPassword={setPassword}
-            setUsername={setUsername}
-          />
+          <FormLogin />
         )}
         <div class="m-4">
           <p className="text-center">
