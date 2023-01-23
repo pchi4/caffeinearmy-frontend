@@ -27,6 +27,46 @@ export default function indexLogin(props) {
   
       } */
 
+<<<<<<< HEAD:src/components/login/indexLogin.jsx
+=======
+    setLoadding(true);
+    setForm(false);
+
+    try {
+      const response = await api.post("/usuario/login", {
+        username,
+        password,
+      });
+
+      login(response.data.token);
+      findUser(response.data.id);
+      setLoadding(false);
+      setForm(false);
+    } catch (err) {
+      console.log(err);
+      setLoadding(false);
+      setForm(true)
+      setAlert(true)
+      setTimeout(() => {
+        setAlert(false)
+      }, 3000)
+    }
+  }
+
+  const findUser = async (id) => {
+    try {
+      const req = await api.get(`usuario/${id}`);
+      let usuario = req.data;
+
+      if (usuario.email === username) {
+        return history.push("/home");
+      }
+
+    } catch (error) {
+      console.log(error);
+    }
+  };
+>>>>>>> ab02eaa45357bf2a0ba30524c48d1c843c07a12c:src/components/login/LoginComponent.jsx
 
   return (
     <div className={styles.containerLogin}>

@@ -15,10 +15,12 @@ export default function indexHome() {
     event.preventDefault();
     const regexCnpj = cnpj.replace(/[^\d]+/g, "");
 
-    api
-      .get(`/empresa/${regexCnpj}`)
-      .then((res) => setEmpresa(res.data))
-      .catch((error) => console.log(error));
+    try {
+      const res = api.get(`/empresa/${regexCnpj}`)
+      setEmpresa(res.data)
+    } catch (erro) {
+      console.log(erro)
+    }
   }
 
   return (
