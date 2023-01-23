@@ -11,7 +11,7 @@ import styles from "../login/LoginStyle.module.css";
 import { Alert } from "react-bootstrap";
 
 
-export default function LoginComponent(props) {
+export default function indexLogin(props) {
 
 
   const [showLoadding, setLoadding] = useState(false);
@@ -52,7 +52,7 @@ export default function LoginComponent(props) {
         {showForm && (
           <FormLogin />
         )}
-        <div class="m-4">
+        <div className="m-4">
           <p className="text-center">
             Caso você não tenha acesso ao sistema, preciso que cadastre-se
           </p>

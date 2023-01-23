@@ -7,13 +7,12 @@ import CollapseEmpresa from "./collapse/collapseEmpresa";
 import ConteudoHome from "./conteudo/conteudoHome";
 import FormBuscarLoja from "./FormBuscarLoja";
 
-export default function HomeComponent() {
+export default function indexHome() {
   const [cnpj, setCnpj] = useState();
   const [empresa, setEmpresa] = useState([]);
 
   function formSubmit(event) {
     event.preventDefault();
-
     const regexCnpj = cnpj.replace(/[^\d]+/g, "");
 
     api
@@ -32,9 +31,9 @@ export default function HomeComponent() {
         <div className={style.content}>
           <FormBuscarLoja formSubmit={formSubmit} setCnpj={setCnpj} />
           <ConteudoHome />
+          <CollapseLojista empresa={empresa} />
+          <CollapseEmpresa empresa={empresa} />
         </div>
-        <CollapseLojista empresa={empresa} />
-        <CollapseEmpresa empresa={empresa} />
       </div>
     </div>
   );

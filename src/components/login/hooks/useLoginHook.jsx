@@ -1,6 +1,6 @@
-import { login } from "../../services/auth";
+import { login } from "../../../services/auth";
 import { useHistory } from "react-router-dom";
-import api from "../../api/api";
+import api from "../../../api/api";
 
 /* type UserCredentials = {
     username: string;
