@@ -15,7 +15,7 @@ const useLoginHook = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   let history = useHistory();
 
-  async function Login(data) {
+  const Login = async (data) => {
     try {
       const response = await api.post("/usuario/login", data);
 

@@ -2,7 +2,6 @@ import ModalCadastroUser from "../home/modal/ModalCadastroUser";
 import ImagemComponent from "./ImagemComponent";
 import FormLogin from "./FormLogin";
 import FooterLogin from "./FooterLogin";
-import { useState } from "react";
 import styles from "../login/LoginStyle.module.css";
 
 import React from "react";
