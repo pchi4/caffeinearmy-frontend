@@ -1,28 +1,21 @@
 import { Button, Form } from "react-bootstrap";
 import { useState } from "react";
 import styles from "./LoginStyle.module.css";
-import useLoginHook from './hooks/useLoginHook'
-
+import useLoginHook from "./hooks/useLoginHook";
+import { useForm } from "react-hook-form";
+import React from "react";
+import { UserCredentials } from "./hooks/useLoginHook";
 
 export default function FormLogin() {
-
   const { Login } = useLoginHook();
-  const [form, setValues] = useState({
-    username: '',
-    password: '',
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-
-  const updateField = (e) => {
-    setValues({
-      ...form,
-      [e.target.name]: e.target.value
-    })
-  }
-
-  const printValues = e => {
-    e.preventDefault();
-    Login(form)
+  const submitForm = (data) => {
+    Login(data);
   };
 
   return (
@@ -33,10 +26,14 @@ export default function FormLogin() {
           type="email"
           className="form-control"
           placeholder="Seu email"
-          value={form.username}
-          onChange={updateField}
-          required={true}
+          {...register("email", { required: "Campo é obrigatório" })}
+          aria-invalid={errors.email ? "true" : "false"}
         ></Form.Control>
+        {errors.email && (
+          <p className="text-danger my-1" role="alert">
+            <strong>{errors.username?.message}</strong>
+          </p>
+        )}
       </Form.Group>
       <Form.Group className="mb-4">
         <Form.Label className="form-label">Senha</Form.Label>
@@ -44,13 +41,21 @@ export default function FormLogin() {
           className="form-control"
           type="password"
           placeholder="Sua senha"
-          value={form.password}
-          onChange={updateField}
-          required={true}
+          {...register("password", { required: "Campo é obrigatório" })}
+          aria-invalid={errors.password ? "true" : "false"}
         ></Form.Control>
+        {errors.password && (
+          <p className="text-danger my-1" role="alert">
+            <strong>{errors.password?.message}</strong>
+          </p>
+        )}
       </Form.Group>
       <Form.Group className="d-grid gap-2 mt-4">
-        <Button class="btn" className={styles.pink} onClick={printValues}>
+        <Button
+          class="btn"
+          className={styles.pink}
+          onClick={handleSubmit(submitForm)}
+        >
           Entrar
         </Button>
       </Form.Group>
