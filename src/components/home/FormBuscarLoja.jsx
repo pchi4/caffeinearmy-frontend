@@ -7,11 +7,19 @@ import useHomeHook from "./hooks/useHomeHook";
 import CollapseEmpresa from "./collapse/collapseEmpresa";
 import CollapseLojista from "./collapse/collapseLojista";
 import ConteudoHome from "./conteudo/conteudoHome";
+import { useEffect } from "react";
+
 
 export default function FormBuscarLoja() {
   const [target, setTarget] = useState();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { searchOwner, empresa, mensageErro } = useHomeHook()
+  const { searchOwner, empresa, mensageErro, setMensageErro } = useHomeHook()
+
+
+  useEffect(() => {
+    setMensageErro(null, false)
+  }, [])
+
 
   function noneInput(e) {
     var teste = e.target.value.length;
@@ -42,7 +50,8 @@ export default function FormBuscarLoja() {
                   className="form-control w-75"
                   name="cnpj"
                   placeholder="         Digite um CNPJ"
-                  onFocus={noneInput}
+                  onKeyUp={noneInput}
+                  // onFocus={noneInput}
                   {...register("cnpj", {
                     required: "CNPJ é obrigatório",
                     minLength: {

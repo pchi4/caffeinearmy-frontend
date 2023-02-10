@@ -10,7 +10,6 @@ const useHomeHook = () => {
     const searchOwner = async ({ cnpj }) => {
         try {
             const res = await api.get(`/empresa/${cnpj}`);
-            console.log(res)
             setEmpresa(res.data);
         } catch (error) {
             setMensageErro(error.response.data.message, true)
@@ -23,7 +22,8 @@ const useHomeHook = () => {
     return {
         searchOwner,
         mensageErro,
-        empresa
+        empresa,
+        setMensageErro
     };
 }
 
