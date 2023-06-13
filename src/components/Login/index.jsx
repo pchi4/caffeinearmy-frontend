@@ -1,8 +1,8 @@
-import ModalCadastroUser from "../home/modal/ModalCadastroUser";
+import RegisterUser from "./Modal/RegisterUser";
 import ImagemComponent from "./ImagemComponent";
 import FormLogin from "./FormLogin";
 import FooterLogin from "./FooterLogin";
-import styles from "../login/LoginStyle.module.css";
+import styles from "../Login/LoginStyle.module.css";
 
 import React from "react";
 
@@ -29,7 +29,7 @@ export default function indexLogin() {
           <p className="text-center">
             Caso você não tenha acesso ao sistema, preciso que cadastre-se
           </p>
-          <ModalCadastroUser />
+          <RegisterUser />
         </div>
         <div className={styles.textFooter}>
           <FooterLogin />

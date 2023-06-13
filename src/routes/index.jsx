@@ -1,8 +1,9 @@
 import { Switch, Route, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../services/auth";
-import indexHome from "../components/home/indexHome";
-import indexLogin from "../components/login/indexLogin";
+import Home from "../components/Home";
+import Login from "../components/Login";
 import NotFound from "../components/not-found/NotFound";
+
 
 export default function Rotas() {
   const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -20,8 +21,8 @@ export default function Rotas() {
 
   return (
     <Switch>
-      <Route exact path="/" component={indexLogin} />
-      <PrivateRoute exact path="/home" component={indexHome} />
+      <Route exact path="/" component={Login} />
+      <PrivateRoute exact path="/home" component={Home} />
       <Route exact path="*" component={NotFound} />
     </Switch>
   );

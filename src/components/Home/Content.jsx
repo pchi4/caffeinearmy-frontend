@@ -1,8 +1,8 @@
-import style from "../HomeStyle.module.css";
+import style from "./HomeStyle.module.css";
 
-export default function ConteudoHome() {
+export default function Content() {
   return (
-    <div>
+    <div style={{ paddingTop: '100px' }}>
       <div class="h4 text-danger border-bottom border-muted my-4"></div>
       <div class="m-3 p-1 text-center">
         <h4 class="fw-bold">
@@ -19,12 +19,12 @@ export default function ConteudoHome() {
         </h4>
       </div>
       <div>
-        <div class="m-3 text-center">
+        <div class="m-3 text-center py-4">
           <h5 class="fw-bold">INFORMAÇÕES ADICIONAIS</h5>
         </div>
       </div>
-      <div class="card">
-        <div class="p-1" className={style.backMobileCard}>
+      <div class="p-1" className={style.backMobileCard}>
+        <div class="card">
           <div class="card-body">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -35,9 +35,6 @@ export default function ConteudoHome() {
             culpa qui officia deserunt mollit anim id est laborum.
           </div>
         </div>
-      </div>
-      <div class="m-5 text-center fw-bold">
-        <h5 class="fw-bold">DADOS CADASTRAIS</h5>
       </div>
     </div>
   );

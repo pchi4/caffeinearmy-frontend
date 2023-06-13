@@ -1,4 +1,4 @@
-import styles from "../login/LoginStyle.module.css";
+import styles from "../Login/LoginStyle.module.css";
 import { Image } from "react-bootstrap";
 
 function ImagemComponent() {

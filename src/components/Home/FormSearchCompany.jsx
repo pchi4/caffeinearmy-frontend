@@ -1,25 +1,21 @@
 import { useState } from "react";
-import { FaArrowRight, FaSearch } from "react-icons/fa";
+import { FaArrowRight, FaSearch, } from "react-icons/fa";
 import { Form, Button, Alert } from "react-bootstrap";
-import styles from "../home/HomeStyle.module.css";
+import styles from "../Home/HomeStyle.module.css";
 import { useForm } from "react-hook-form";
-import useHomeHook from "./hooks/useHomeHook";
-import CollapseEmpresa from "./collapse/collapseEmpresa";
-import CollapseLojista from "./collapse/collapseLojista";
-import ConteudoHome from "./conteudo/conteudoHome";
-import { useEffect } from "react";
+import Company from "./Collapse/Company";
+import Shopkeeper from "./Collapse/Shopkeeper";
+import Content from "./Content";
+import { useGetSearchCompany } from "./hooks/queries";
+import LoadingComponent from '../loadding/LoaddingComponent'
 
 
-export default function FormBuscarLoja() {
+export default function FormSearchCompany() {
   const [target, setTarget] = useState();
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { searchOwner, empresa, mensageErro, setMensageErro } = useHomeHook()
+  const [params, setParams] = useState({})
 
-
-  useEffect(() => {
-    setMensageErro(null, false)
-  }, [])
-
+  const { data: company, isLoading, isFetching, error } = useGetSearchCompany({ cnpj: params.cnpj })
 
   function noneInput(e) {
     var teste = e.target.value.length;
@@ -27,15 +23,21 @@ export default function FormBuscarLoja() {
   }
 
   const handleValue = (data) => {
-    searchOwner(data)
+    setParams(data)
   }
+
+
+  if (isFetching || isLoading) {
+    return <LoadingComponent />
+  }
+
 
   return (
     <>
       <div className={styles.backMobile}>
         <div class="d-flex justify-content-evenly align-items-center">
           <Form className="w-100">
-            {mensageErro && <Alert variant="danger">{mensageErro}</Alert>}
+            {error && <Alert variant="danger">{error?.message}</Alert>}
             <Form.Group className="input-group p-3">
               <Form.Group className="input-group mb-3">
                 {target >= 1 ? (
@@ -77,10 +79,10 @@ export default function FormBuscarLoja() {
           </Form>
         </div>
       </div>
+      <Content />
       <div className={styles.content}>
-        <ConteudoHome />
-        <CollapseLojista empresa={empresa} />
-        <CollapseEmpresa empresa={empresa} />
+        <Company empresa={company} />
+        <Shopkeeper empresa={company} />
       </div>
     </>
   );

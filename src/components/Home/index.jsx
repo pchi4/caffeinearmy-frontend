@@ -1,7 +1,7 @@
 
-import NavBar from "../layouts/NavBar";
-import style from "../home/HomeStyle.module.css";
-import FormBuscarLoja from "./FormBuscarLoja";
+import NavBar from "../Layouts/NavBar";
+import style from "../Home/HomeStyle.module.css";
+import FormSearchCompany from "./FormSearchCompany";
 
 export default function indexHome() {
 
@@ -11,9 +11,9 @@ export default function indexHome() {
         <NavBar />
       </div>
       <div className="text-danger border-bottom border-muted"></div>
-      <div class="d-sm" className={style.background}>
+      <div class="d-sm" className={style.background} style={{ height: '100vh' }}>
         <div className={style.content}>
-          <FormBuscarLoja />
+          <FormSearchCompany />
         </div>
       </div>
     </div>

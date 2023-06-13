@@ -2,17 +2,9 @@ import { login } from "../../../services/auth";
 import { useHistory } from "react-router-dom";
 import api from "../../../api/api";
 import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-
-// export interface UserCredentials {
-//   email: string;
-//   password: string;
-// }
 
 const useLoginHook = () => {
-  const MySwal = withReactContent(Swal);
 
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   let history = useHistory();
 
   const Login = async (data) => {
@@ -27,8 +19,8 @@ const useLoginHook = () => {
 
       return;
     } catch (error) {
-      MySwal.fire({
-        title: error.response.data.error,
+      Swal.fire({
+        title: error ? error.response?.data.error : error.mensagem,
         text: error.response.data.message,
         icon: "error",
       });
