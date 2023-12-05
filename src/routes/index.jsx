@@ -1,9 +1,8 @@
-import { Switch, Route, Redirect } from "react-router-dom";
-import { isAuthenticated } from "../services/auth";
-import Home from "../components/Home";
-import Login from "../components/Login";
-import NotFound from "../components/not-found/NotFound";
-
+import { Switch, Route, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../services/auth';
+import Home from '../components/Home';
+import Login from '../components/Login';
+import NotFound from '../components/not-found/NotFound';
 
 export default function Rotas() {
   const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -13,7 +12,7 @@ export default function Rotas() {
         isAuthenticated() ? (
           <Component {...props} />
         ) : (
-          <Redirect to={{ pathname: "/", state: { from: props.location } }} />
+          <Redirect to={{ pathname: '/', state: { from: props.location } }} />
         )
       }
     />

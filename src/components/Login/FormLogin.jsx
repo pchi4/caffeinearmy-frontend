@@ -1,15 +1,15 @@
-import { Button, Form } from "react-bootstrap";
-import styles from "./LoginStyle.module.css";
-import useLoginHook from "./hooks/useLoginHook";
-import { useForm } from "react-hook-form";
-import React from "react";
+import { Button, Form } from 'react-bootstrap';
+import styles from './LoginStyle.module.css';
+import useLoginHook from './hooks/useLoginHook';
+import { useForm } from 'react-hook-form';
+import React from 'react';
 
 export default function FormLogin() {
   const { Login } = useLoginHook();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
   const submitForm = (data) => {
@@ -24,8 +24,8 @@ export default function FormLogin() {
           type="email"
           className="form-control"
           placeholder="Seu email"
-          {...register("email", { required: "Campo é obrigatório" })}
-          aria-invalid={errors.email ? "true" : "false"}
+          {...register('email', { required: 'Campo é obrigatório' })}
+          aria-invalid={errors.email ? 'true' : 'false'}
         ></Form.Control>
         {errors.email && (
           <p className="text-danger my-1" role="alert">
@@ -39,8 +39,8 @@ export default function FormLogin() {
           className="form-control"
           type="password"
           placeholder="Sua senha"
-          {...register("password", { required: "Campo é obrigatório" })}
-          aria-invalid={errors.password ? "true" : "false"}
+          {...register('password', { required: 'Campo é obrigatório' })}
+          aria-invalid={errors.password ? 'true' : 'false'}
         ></Form.Control>
         {errors.password && (
           <p className="text-danger my-1" role="alert">

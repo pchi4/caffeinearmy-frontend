@@ -1,1 +1,1 @@
-export * from './usePostRegisterCompany'
+export * from './usePostRegisterCompany';

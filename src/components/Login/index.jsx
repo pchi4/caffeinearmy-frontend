@@ -1,10 +1,10 @@
-import RegisterUser from "./Modal/RegisterUser";
-import ImagemComponent from "./ImagemComponent";
-import FormLogin from "./FormLogin";
-import FooterLogin from "./FooterLogin";
-import styles from "../Login/LoginStyle.module.css";
+import RegisterUser from './Modal/RegisterUser';
+import ImagemComponent from './ImagemComponent';
+import FormLogin from './FormLogin';
+import FooterLogin from './FooterLogin';
+import styles from '../Login/LoginStyle.module.css';
 
-import React from "react";
+import React from 'react';
 
 export default function indexLogin() {
   return (

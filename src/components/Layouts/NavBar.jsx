@@ -1,12 +1,20 @@
-import styles from "../Home/HomeStyle.module.css";
-import { logout } from "../../services/auth";
-import { useHistory } from "react-router-dom";
-import Swal from "sweetalert2";
-import { Navbar, Container, Modal, Button, Form, Row, Col } from "react-bootstrap";
-import { useState } from "react";
-import { useForm } from "react-hook-form"
-import { usePostRegisterCompany } from './hooks/mutations'
-import LoadingComponent from "../loadding/LoaddingComponent";
+import styles from '../Home/HomeStyle.module.css';
+import { logout } from '../../services/auth';
+import { useHistory } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import {
+  Navbar,
+  Container,
+  Modal,
+  Button,
+  Form,
+  Row,
+  Col
+} from 'react-bootstrap';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { usePostRegisterCompany } from './hooks/mutations';
+import LoadingComponent from '../loadding/LoaddingComponent';
 
 export default function NavBar() {
   let history = useHistory();
@@ -15,20 +23,19 @@ export default function NavBar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const columns = [
     {
-      "label": "CNPJ",
-      "key": "cnpj",
-      "type": "text",
-      "placeholder": "Digite um cnpj"
+      label: 'CNPJ',
+      key: 'cnpj',
+      type: 'text',
+      placeholder: 'Digite um cnpj'
     },
     {
-      "label": "Nome Fantasia",
-      "key": "nomeFantasia",
-      "type": "text",
-      "placeholder": "Digite o nome da Fantasia"
-    },
+      label: 'Nome Fantasia',
+      key: 'nomeFantasia',
+      type: 'text',
+      placeholder: 'Digite o nome da Fantasia'
+    }
     // {
     //   "label": "Email",
     //   "key": "email",
@@ -71,44 +78,42 @@ export default function NavBar() {
     //   "type": "email",
     //   "placeholder": "Digite o email do lojista"
     // },
-  ]
+  ];
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm();
 
-
-  const { mutate: registerCompany, isLoading } = usePostRegisterCompany()
+  const { mutate: registerCompany, isLoading } = usePostRegisterCompany();
 
   const submitForm = async (data) => {
-    registerCompany(data)
-    setShow(false)
-  }
-
+    registerCompany(data);
+    setShow(false);
+  };
 
   if (isLoading) {
-    return < LoadingComponent />
+    return <LoadingComponent />;
   }
 
   function Logout(e) {
     Swal.fire({
-      title: "Deseja sair?",
-      icon: "warning",
+      title: 'Deseja sair?',
+      icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      confirmButtonText: "Sair",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Sair',
+      cancelButtonColor: '#d33'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire({
-          title: "Logout feito com sucesso.",
-          icon: "success",
+          title: 'Logout feito com sucesso.',
+          icon: 'success'
         });
         logout();
         setTimeout(() => {
-          history.push("/");
+          history.push('/');
         }, 2000);
       }
     });
@@ -116,25 +121,24 @@ export default function NavBar() {
 
   const navs = [
     {
-      "href": '/home',
-      "title": 'Lojas',
-      "src": '/icone_lojas.svg',
-      "event": () => history.push('/home')
+      href: '/home',
+      title: 'Lojas',
+      src: '/icone_lojas.svg',
+      event: () => history.push('/home')
     },
     {
-      "href": () => false,
-      "title": 'Cadastrar',
-      "src": "icone_sair.svg",
-      "event": handleShow,
+      href: () => false,
+      title: 'Cadastrar',
+      src: 'icone_sair.svg',
+      event: handleShow
     },
     {
-      "href": () => false,
-      "title": 'Sair',
-      "src": 'icone_sair.svg',
-      "event": Logout,
+      href: () => false,
+      title: 'Sair',
+      src: 'icone_sair.svg',
+      event: Logout
     }
-  ]
-
+  ];
 
   return (
     <Navbar class="navbar">
@@ -169,45 +173,53 @@ export default function NavBar() {
             </li>
           ))}
         </ul>
-        {show && <>
-          <Modal show={show} onHide={handleClose} size="xl">
-            <Modal.Header closeButton>
-              <Modal.Title>Cadastro de Empresa</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-
-              <Form className="container my-5">
-                {columns.map((colum, idx) => (
-                  <Form.Group as={Row} key={colum.key} className="mb-3" controlId="formPlaintextPassword">
-                    <Form.Label column sm="2">
-                      {colum.label}
-                    </Form.Label>
-                    <Col sm="10">
-                      <Form.Control
-                        type={colum.type}
-                        placeholder={colum.placeholder}
-                        {...register(colum.key, { required: "Este campo é obrigatório" })}
-                      />
-                      {errors.value && (
-                        <p className="text-danger my-1" role="alert">
-                          <strong>{errors.value?.message}</strong>
-                        </p>
-                      )}
-                    </Col>
-                  </Form.Group>
-                ))}
-              </Form>
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant="secondary" onClick={handleClose}>
-                Cancelar
-              </Button>
-              <Button variant="primary" onClick={handleSubmit(submitForm)}>
-                Cadastrar
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        </>}
+        {show && (
+          <>
+            <Modal show={show} onHide={handleClose} size="xl">
+              <Modal.Header closeButton>
+                <Modal.Title>Cadastro de Empresa</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <Form className="container my-5">
+                  {columns.map((colum, idx) => (
+                    <Form.Group
+                      as={Row}
+                      key={colum.key}
+                      className="mb-3"
+                      controlId="formPlaintextPassword"
+                    >
+                      <Form.Label column sm="2">
+                        {colum.label}
+                      </Form.Label>
+                      <Col sm="10">
+                        <Form.Control
+                          type={colum.type}
+                          placeholder={colum.placeholder}
+                          {...register(colum.key, {
+                            required: 'Este campo é obrigatório'
+                          })}
+                        />
+                        {errors.value && (
+                          <p className="text-danger my-1" role="alert">
+                            <strong>{errors.value?.message}</strong>
+                          </p>
+                        )}
+                      </Col>
+                    </Form.Group>
+                  ))}
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Cancelar
+                </Button>
+                <Button variant="primary" onClick={handleSubmit(submitForm)}>
+                  Cadastrar
+                </Button>
+              </Modal.Footer>
+            </Modal>
+          </>
+        )}
       </Container>
     </Navbar>
   );

@@ -1,21 +1,29 @@
-import { useState } from "react";
-import { FaArrowRight, FaSearch, } from "react-icons/fa";
-import { Form, Button, Alert } from "react-bootstrap";
-import styles from "../Home/HomeStyle.module.css";
-import { useForm } from "react-hook-form";
-import Company from "./Collapse/Company";
-import Shopkeeper from "./Collapse/Shopkeeper";
-import Content from "./Content";
-import { useGetSearchCompany } from "./hooks/queries";
-import LoadingComponent from '../loadding/LoaddingComponent'
-
+import { useState } from 'react';
+import { FaArrowRight, FaSearch } from 'react-icons/fa';
+import { Form, Button, Alert } from 'react-bootstrap';
+import styles from '../Home/HomeStyle.module.css';
+import { useForm } from 'react-hook-form';
+import Company from './Collapse/Company';
+import Shopkeeper from './Collapse/Shopkeeper';
+import Content from './Content';
+import { useGetSearchCompany } from './hooks/queries';
+import LoadingComponent from '../loadding/LoaddingComponent';
 
 export default function FormSearchCompany() {
   const [target, setTarget] = useState();
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const [params, setParams] = useState({})
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
+  const [params, setParams] = useState({});
 
-  const { data: company, isLoading, isFetching, error } = useGetSearchCompany({ cnpj: params.cnpj })
+  const {
+    data: company,
+    isLoading,
+    isFetching,
+    error
+  } = useGetSearchCompany({ cnpj: params.cnpj });
 
   function noneInput(e) {
     var teste = e.target.value.length;
@@ -23,14 +31,12 @@ export default function FormSearchCompany() {
   }
 
   const handleValue = (data) => {
-    setParams(data)
-  }
-
+    setParams(data);
+  };
 
   if (isFetching || isLoading) {
-    return <LoadingComponent />
+    return <LoadingComponent />;
   }
-
 
   return (
     <>
@@ -54,26 +60,32 @@ export default function FormSearchCompany() {
                   placeholder="         Digite um CNPJ"
                   onKeyUp={noneInput}
                   // onFocus={noneInput}
-                  {...register("cnpj", {
-                    required: "CNPJ é obrigatório",
+                  {...register('cnpj', {
+                    required: 'CNPJ é obrigatório',
                     minLength: {
                       value: 11,
-                      message: "CNPJ inválido"
+                      message: 'CNPJ inválido'
                     }
                   })}
-                  aria-invalid={errors.cnpj ? "true" : "false"}
+                  aria-invalid={errors.cnpj ? 'true' : 'false'}
                 />
                 <Button
                   className="btn btn-secondary d-sm-block d-md-none m-2"
-                  onClick={handleSubmit(handleValue)}>
+                  onClick={handleSubmit(handleValue)}
+                >
                   <FaArrowRight />
                 </Button>
                 <Button
                   className="btn btn-danger d-none d-md-block d-lg-block m-2"
-                  onClick={handleSubmit(handleValue)}>
+                  onClick={handleSubmit(handleValue)}
+                >
                   Buscar Loja
                 </Button>
-                {errors.cnpj && <p className="text-danger my-3" role="alert"><strong>{errors.cnpj?.message}</strong></p>}
+                {errors.cnpj && (
+                  <p className="text-danger my-3" role="alert">
+                    <strong>{errors.cnpj?.message}</strong>
+                  </p>
+                )}
               </Form.Group>
             </Form.Group>
           </Form>

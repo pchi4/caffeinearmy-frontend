@@ -1,4 +1,4 @@
-import style from "./HomeStyle.module.css";
+import style from './HomeStyle.module.css';
 
 export default function Content() {
   return (
@@ -11,8 +11,8 @@ export default function Content() {
             alt="icone roxo da loja"
             class="rounded-circle bg-info"
             className={style.iconCircle}
-          ></img>{" "}
-          LOJA DE SUPLEMENTOS{" "}
+          ></img>{' '}
+          LOJA DE SUPLEMENTOS{' '}
           <span class="text-muted d-none d-sm-inline m-2">
             - LOJA DE SUPLEMENTOS LTDA.
           </span>

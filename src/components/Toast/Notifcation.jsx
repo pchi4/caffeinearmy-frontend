@@ -10,7 +10,13 @@ export default function Notifcation({ title, text, type, amost }) {
   return (
     <Row>
       <Col xs={12}>
-        <Toast bg={type} onClose={() => setShow(false)} show={show ? show : amost} delay={3000} autohide>
+        <Toast
+          bg={type}
+          onClose={() => setShow(false)}
+          show={show ? show : amost}
+          delay={3000}
+          autohide
+        >
           <Toast.Header>
             <strong className="me-auto">{title}</strong>
           </Toast.Header>
