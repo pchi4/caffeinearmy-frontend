@@ -29,19 +29,19 @@ export default function CollapseEmpresa({ empresa }) {
                     <div class="w-100"></div>
                     <div class="col-12 col-md-6 col-sm-6 p-1 ">
                       <span>
-                        <span class="fw-bold">Nome Fantasia:</span>{' '}
+                        <span class="fw-bold">Nome Fantasia:</span>
                         {empresa?.nomeFantasia}
                       </span>
                     </div>
                     <div class="col-12 col-md-6 col-sm-6 p-1 ">
                       <span>
-                        <span class="fw-bold">Telefone:</span>{' '}
+                        <span class="fw-bold">Telefone:</span>
                         {empresa?.telefone}
                       </span>
                     </div>
                     <div class="col-12 col-md-6 col-sm-6 p-1 ">
                       <span>
-                        <span class="fw-bold">Razão Social:</span>{' '}
+                        <span class="fw-bold">Razão Social:</span>
                         {empresa?.razaoSocial}
                       </span>
                     </div>
